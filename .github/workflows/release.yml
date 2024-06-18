@@ -54,8 +54,7 @@ jobs:
         run: cargo install toml-cli
       - name: Update Cargo.toml with new version
         run: |
-          toml set Cargo.toml package.version "${{ needs.determine-next-version.outputs.nextVersion }}" \
-            | tee Cargo.toml
+          toml set Cargo.toml package.version "${{ needs.determine-next-version.outputs.nextVersion }}" > Cargo.toml
           cargo build
       - name: Push updated version
         run: |
