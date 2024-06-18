@@ -74,6 +74,10 @@ jobs:
         with:
           name: reliquary-archiver_x64
           path: reliquary-archiver_x64_v${{steps.getVersion.outputs.nextVersion}}.exe
+      - name: Create and push version tag
+        run: |
+          git tag v${{steps.getVersion.outputs.nextVersion}}
+          git push origin --tags
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
