@@ -45,7 +45,7 @@ jobs:
           path: target/release/test.exe
   create-release:
     runs-on: windows-latest
-    needs: [build-windows]
+    needs: [build-windows, determine-next-version]
     permissions:
       contents: write
     steps:
